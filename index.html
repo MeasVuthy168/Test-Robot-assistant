@@ -1,182 +1,142 @@
-<!DOCTYPE html><html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Animated Robot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
-      margin: 0;
       background-color: #0d2d5c;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }.robot {
-  position: relative;
-  width: 180px;
-  height: 350px;
-  animation: bounce 2s infinite;
-}
+      margin: 0;
+    }
 
-.head {
-  width: 80px;
-  height: 50px;
-  background: gold;
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 50px;
-  animation: headRotate 2s infinite alternate;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+    .robot {
+      position: relative;
+      width: 120px;
+      animation: walk 2s infinite alternate ease-in-out;
+    }
 
-.eye {
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  animation: blink 2s infinite;
-}
+    .head {
+      width: 80px;
+      height: 50px;
+      background: gold;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      animation: rotateHead 3s infinite ease-in-out;
+      transform-origin: center;
+      margin: 0 auto;
+    }
 
-.neck {
-  width: 16px;
-  height: 10px;
-  background: gold;
-  position: absolute;
-  top: 50px;
-  left: 82px;
-  border-radius: 4px;
-}
+    .eye {
+      width: 10px;
+      height: 10px;
+      background: #0d2d5c;
+      border-radius: 50%;
+      animation: blink 4s infinite;
+    }
 
-.body {
-  width: 80px;
-  height: 100px;
-  background: gold;
-  border-radius: 16px;
-  position: absolute;
-  top: 60px;
-  left: 50px;
-}
+    .neck {
+      width: 10px;
+      height: 10px;
+      background: gold;
+      margin: 0 auto;
+    }
 
-.shoulder-left, .shoulder-right {
-  width: 20px;
-  height: 20px;
-  background: gold;
-  border-radius: 50%;
-  position: absolute;
-  top: 70px;
-}
+    .body {
+      width: 70px;
+      height: 100px;
+      background: gold;
+      border-radius: 10px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-.shoulder-left {
-  left: 30px;
-}
+    .shoulder {
+      width: 100%;
+      height: 10px;
+      position: absolute;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+    }
 
-.shoulder-right {
-  right: 30px;
-}
+    .arm {
+      width: 20px;
+      height: 60px;
+      background: gold;
+      transform-origin: top center;
+    }
 
-.arm-left, .arm-right {
-  width: 60px;
-  height: 16px;
-  background: gold;
-  border-radius: 8px;
-  position: absolute;
-  top: 80px;
-  transform-origin: left center;
-}
+    .left-arm {
+      animation: waveLeft 2s infinite ease-in-out;
+    }
 
-.arm-left {
-  left: -10px;
-  animation: swingArm 1.5s infinite ease-in-out;
-}
+    .right-arm {
+      animation: waveRight 2s infinite ease-in-out;
+    }
 
-.arm-right {
-  right: -10px;
-  animation: swingArm 1.5s infinite ease-in-out reverse;
-}
+    .legs {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
 
-.hand-left, .hand-right {
-  width: 16px;
-  height: 16px;
-  background: gold;
-  border-radius: 50%;
-  position: absolute;
-  top: 82px;
-}
+    .leg {
+      width: 15px;
+      height: 50px;
+      background: gold;
+      border-radius: 4px;
+      animation: step 1s infinite ease-in-out;
+    }
 
-.hand-left {
-  left: -50px;
-}
+    .leg.right {
+      animation-delay: 0.5s;
+    }
 
-.hand-right {
-  right: -50px;
-}
+    .shoe {
+      width: 30px;
+      height: 10px;
+      background: gold;
+      border-radius: 4px;
+      margin-top: 2px;
+    }
 
-.leg-left, .leg-right {
-  width: 20px;
-  height: 60px;
-  background: gold;
-  border-radius: 6px;
-  position: absolute;
-  top: 160px;
-}
+    @keyframes rotateHead {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
 
-.leg-left {
-  left: 60px;
-  animation: walk 1.5s infinite ease-in-out;
-}
+    @keyframes blink {
+      0%, 95%, 100% { transform: scaleY(1); }
+      96%, 98% { transform: scaleY(0.1); }
+    }
 
-.leg-right {
-  right: 60px;
-  animation: walk 1.5s infinite ease-in-out reverse;
-}
+    @keyframes waveLeft {
+      0%, 100% { transform: rotate(30deg); }
+      50% { transform: rotate(60deg); }
+    }
 
-.shoe-left, .shoe-right {
-  width: 40px;
-  height: 20px;
-  background: gold;
-  position: absolute;
-  border-radius: 10px 10px 0 0;
-  top: 215px;
-}
+    @keyframes waveRight {
+      0%, 100% { transform: rotate(-30deg); }
+      50% { transform: rotate(-60deg); }
+    }
 
-.shoe-left {
-  left: 50px;
-}
+    @keyframes walk {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(4px); }
+    }
 
-.shoe-right {
-  right: 50px;
-}
-
-@keyframes headRotate {
-  0% { transform: rotate(-10deg); }
-  100% { transform: rotate(10deg); }
-}
-
-@keyframes blink {
-  0%, 90% { transform: scaleY(1); }
-  95%, 100% { transform: scaleY(0.1); }
-}
-
-@keyframes swingArm {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(25deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes walk {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(20deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
+    @keyframes step {
+      0%, 100% { transform: rotate(10deg); }
+      50% { transform: rotate(-10deg); }
+    }
   </style>
 </head>
 <body>
@@ -186,17 +146,22 @@
       <div class="eye"></div>
     </div>
     <div class="neck"></div>
-    <div class="body"></div>
-    <div class="shoulder-left"></div>
-    <div class="shoulder-right"></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
-    <div class="hand-left"></div>
-    <div class="hand-right"></div>
-    <div class="leg-left"></div>
-    <div class="leg-right"></div>
-    <div class="shoe-left"></div>
-    <div class="shoe-right"></div>
+    <div class="body">
+      <div class="shoulder">
+        <div class="arm left-arm"></div>
+        <div class="arm right-arm"></div>
+      </div>
+    </div>
+    <div class="legs">
+      <div>
+        <div class="leg left"></div>
+        <div class="shoe"></div>
+      </div>
+      <div>
+        <div class="leg right"></div>
+        <div class="shoe"></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
