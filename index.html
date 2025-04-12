@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Animated Robot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
@@ -16,121 +17,137 @@
 
     .robot {
       position: relative;
-      animation: walk 2s infinite ease-in-out;
+      width: 150px;
+      height: 300px;
+      animation: bounce 2s infinite;
     }
 
+    /* Head */
     .head {
       width: 80px;
       height: 50px;
-      background: #ffd700;
+      background: gold;
       border-radius: 10px;
-      position: relative;
-      animation: head-tilt 2s infinite ease-in-out;
-      transform-origin: center;
-      margin: 0 auto;
+      position: absolute;
+      top: 0;
+      left: 35px;
+      animation: headRotate 2s infinite alternate;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
 
     .eye {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       background: black;
       border-radius: 50%;
-      position: absolute;
-      top: 18px;
-      animation: blink 4s infinite;
+      animation: blink 2s infinite;
     }
 
-    .eye.left { left: 18px; }
-    .eye.right { right: 18px; }
-
+    /* Neck */
     .neck {
-      width: 10px;
+      width: 12px;
       height: 10px;
-      background: #ffd700;
-      margin: 0 auto;
+      background: gold;
+      position: absolute;
+      top: 50px;
+      left: 69px;
     }
 
+    /* Body */
     .body {
-      width: 60px;
+      width: 80px;
       height: 100px;
-      background: #ffd700;
-      border-radius: 12px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .arm {
-      width: 40px;
-      height: 10px;
-      background: #ffd700;
+      background: gold;
+      border-radius: 16px;
       position: absolute;
-      top: 20px;
-      transform-origin: left center;
+      top: 60px;
+      left: 35px;
     }
 
-    .arm.left {
+    /* Arms */
+    .left-arm, .right-arm {
+      width: 60px;
+      height: 16px;
+      background: gold;
+      border-radius: 8px;
+      position: absolute;
+      top: 70px;
+      transform-origin: center left;
+    }
+
+    .left-arm {
       left: -40px;
-      animation: wave-left 1.5s infinite ease-in-out;
+      animation: wave 1.5s infinite ease-in-out;
     }
 
-    .arm.right {
+    .right-arm {
       right: -40px;
-      transform-origin: right center;
-      animation: wave-right 1.5s infinite ease-in-out;
+      animation: wave 1.5s infinite ease-in-out reverse;
     }
 
-    .leg {
-      width: 14px;
-      height: 50px;
-      background: #ffd700;
+    /* Legs */
+    .left-leg, .right-leg {
+      width: 20px;
+      height: 60px;
+      background: gold;
+      border-radius: 6px;
       position: absolute;
-      bottom: -50px;
-      border-radius: 4px;
+      top: 160px;
     }
 
-    .leg.left { left: 10px; }
-    .leg.right { right: 10px; }
+    .left-leg {
+      left: 40px;
+      animation: walk 1.5s infinite ease-in-out;
+    }
+
+    .right-leg {
+      right: 40px;
+      animation: walk 1.5s infinite ease-in-out reverse;
+    }
 
     /* Animations */
-    @keyframes walk {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    @keyframes head-tilt {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(-5deg); }
-    }
-
-    @keyframes wave-left {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(40deg); }
-    }
-
-    @keyframes wave-right {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(-40deg); }
+    @keyframes headRotate {
+      0% { transform: rotate(-10deg); }
+      100% { transform: rotate(10deg); }
     }
 
     @keyframes blink {
-      0%, 100% { transform: scaleY(1); }
-      45%, 55% { transform: scaleY(0.2); }
+      0%, 90% { transform: scaleY(1); }
+      95%, 100% { transform: scaleY(0.1); }
+    }
+
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(30deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes walk {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(20deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
 <body>
   <div class="robot">
     <div class="head">
-      <div class="eye left"></div>
-      <div class="eye right"></div>
+      <div class="eye"></div>
+      <div class="eye"></div>
     </div>
     <div class="neck"></div>
-    <div class="body">
-      <div class="arm left"></div>
-      <div class="arm right"></div>
-      <div class="leg left"></div>
-      <div class="leg right"></div>
-    </div>
+    <div class="body"></div>
+    <div class="left-arm"></div>
+    <div class="right-arm"></div>
+    <div class="left-leg"></div>
+    <div class="right-leg"></div>
   </div>
 </body>
 </html>
