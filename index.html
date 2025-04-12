@@ -3,139 +3,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Animated Robot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       background-color: #0d2d5c;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
     }
 
     .robot {
       position: relative;
       width: 120px;
-      animation: walk 2s infinite alternate ease-in-out;
+      animation: float 3s ease-in-out infinite;
     }
 
+    /* HEAD */
     .head {
-      width: 80px;
+      width: 70px;
       height: 50px;
-      background: gold;
-      border-radius: 10px;
+      background-color: white;
+      border-radius: 16px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(-10deg);
       display: flex;
       justify-content: space-around;
       align-items: center;
-      animation: rotateHead 3s infinite ease-in-out;
-      transform-origin: center;
-      margin: 0 auto;
+      padding: 0 6px;
     }
 
     .eye {
-      width: 10px;
-      height: 10px;
-      background: #0d2d5c;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      animation: blink 4s infinite;
+      background-color: #facc15;
     }
 
+    /* NECK */
     .neck {
-      width: 10px;
-      height: 10px;
-      background: gold;
-      margin: 0 auto;
+      width: 14px;
+      height: 14px;
+      background-color: #999;
+      position: absolute;
+      top: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 4px;
     }
 
+    /* BODY */
     .body {
       width: 70px;
-      height: 100px;
-      background: gold;
-      border-radius: 10px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .shoulder {
-      width: 100%;
-      height: 10px;
+      height: 80px;
+      background-color: #f1f5f9;
+      border-radius: 16px;
       position: absolute;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
+    /* JOINTS */
+    .joint {
+      width: 16px;
+      height: 16px;
+      background-color: #444;
+      border-radius: 50%;
+      position: absolute;
+      top: 70px;
+    }
+
+    .joint.left { left: 0; }
+    .joint.right { right: 0; }
+
+    /* ARMS */
     .arm {
-      width: 20px;
-      height: 60px;
-      background: gold;
+      width: 10px;
+      height: 40px;
+      background-color: black;
+      position: absolute;
+      top: 80px;
       transform-origin: top center;
     }
 
-    .left-arm {
-      animation: waveLeft 2s infinite ease-in-out;
+    .arm.left {
+      left: -12px;
+      transform: rotate(-45deg);
+      animation: waveLeft 2s ease-in-out infinite;
     }
 
-    .right-arm {
-      animation: waveRight 2s infinite ease-in-out;
+    .arm.right {
+      right: -12px;
+      transform: rotate(45deg);
+      animation: waveRight 2s ease-in-out infinite;
     }
 
-    .legs {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
+    .hand {
+      width: 16px;
+      height: 20px;
+      background-color: white;
+      border-radius: 8px;
+      position: absolute;
+      bottom: -20px;
+      left: -3px;
     }
 
+    /* WAIST */
+    .waist {
+      width: 60px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+      position: absolute;
+      top: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* LEGS */
     .leg {
-      width: 15px;
-      height: 50px;
-      background: gold;
-      border-radius: 4px;
-      animation: step 1s infinite ease-in-out;
+      width: 10px;
+      height: 40px;
+      background-color: black;
+      position: absolute;
+      top: 160px;
     }
 
-    .leg.right {
-      animation-delay: 0.5s;
-    }
+    .leg.left { left: 26px; }
+    .leg.right { right: 26px; }
 
+    /* SHOES */
     .shoe {
       width: 30px;
-      height: 10px;
-      background: gold;
-      border-radius: 4px;
-      margin-top: 2px;
+      height: 16px;
+      background-color: black;
+      border-radius: 6px 6px 0 0;
+      position: absolute;
+      top: 200px;
     }
 
-    @keyframes rotateHead {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
-    }
+    .shoe.left { left: 10px; }
+    .shoe.right { right: 10px; }
 
-    @keyframes blink {
-      0%, 95%, 100% { transform: scaleY(1); }
-      96%, 98% { transform: scaleY(0.1); }
-    }
-
+    /* Animations */
     @keyframes waveLeft {
-      0%, 100% { transform: rotate(30deg); }
-      50% { transform: rotate(60deg); }
+      0%, 100% { transform: rotate(-45deg); }
+      50% { transform: rotate(-70deg); }
     }
 
     @keyframes waveRight {
-      0%, 100% { transform: rotate(-30deg); }
-      50% { transform: rotate(-60deg); }
+      0%, 100% { transform: rotate(45deg); }
+      50% { transform: rotate(70deg); }
     }
 
-    @keyframes walk {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(4px); }
-    }
-
-    @keyframes step {
-      0%, 100% { transform: rotate(10deg); }
-      50% { transform: rotate(-10deg); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
   </style>
 </head>
@@ -146,22 +175,16 @@
       <div class="eye"></div>
     </div>
     <div class="neck"></div>
-    <div class="body">
-      <div class="shoulder">
-        <div class="arm left-arm"></div>
-        <div class="arm right-arm"></div>
-      </div>
-    </div>
-    <div class="legs">
-      <div>
-        <div class="leg left"></div>
-        <div class="shoe"></div>
-      </div>
-      <div>
-        <div class="leg right"></div>
-        <div class="shoe"></div>
-      </div>
-    </div>
+    <div class="body"></div>
+    <div class="joint left"></div>
+    <div class="joint right"></div>
+    <div class="arm left"><div class="hand"></div></div>
+    <div class="arm right"><div class="hand"></div></div>
+    <div class="waist"></div>
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+    <div class="shoe left"></div>
+    <div class="shoe right"></div>
   </div>
 </body>
 </html>
