@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Animated Robot</title>
@@ -13,127 +11,172 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
+    }.robot {
+  position: relative;
+  width: 180px;
+  height: 350px;
+  animation: bounce 2s infinite;
+}
 
-    .robot {
-      position: relative;
-      width: 150px;
-      height: 300px;
-      animation: bounce 2s infinite;
-    }
+.head {
+  width: 80px;
+  height: 50px;
+  background: gold;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  animation: headRotate 2s infinite alternate;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
-    /* Head */
-    .head {
-      width: 80px;
-      height: 50px;
-      background: gold;
-      border-radius: 10px;
-      position: absolute;
-      top: 0;
-      left: 35px;
-      animation: headRotate 2s infinite alternate;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+.eye {
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
 
-    .eye {
-      width: 12px;
-      height: 12px;
-      background: black;
-      border-radius: 50%;
-      animation: blink 2s infinite;
-    }
+.neck {
+  width: 16px;
+  height: 10px;
+  background: gold;
+  position: absolute;
+  top: 50px;
+  left: 82px;
+  border-radius: 4px;
+}
 
-    /* Neck */
-    .neck {
-      width: 12px;
-      height: 10px;
-      background: gold;
-      position: absolute;
-      top: 50px;
-      left: 69px;
-    }
+.body {
+  width: 80px;
+  height: 100px;
+  background: gold;
+  border-radius: 16px;
+  position: absolute;
+  top: 60px;
+  left: 50px;
+}
 
-    /* Body */
-    .body {
-      width: 80px;
-      height: 100px;
-      background: gold;
-      border-radius: 16px;
-      position: absolute;
-      top: 60px;
-      left: 35px;
-    }
+.shoulder-left, .shoulder-right {
+  width: 20px;
+  height: 20px;
+  background: gold;
+  border-radius: 50%;
+  position: absolute;
+  top: 70px;
+}
 
-    /* Arms */
-    .left-arm, .right-arm {
-      width: 60px;
-      height: 16px;
-      background: gold;
-      border-radius: 8px;
-      position: absolute;
-      top: 70px;
-      transform-origin: center left;
-    }
+.shoulder-left {
+  left: 30px;
+}
 
-    .left-arm {
-      left: -40px;
-      animation: wave 1.5s infinite ease-in-out;
-    }
+.shoulder-right {
+  right: 30px;
+}
 
-    .right-arm {
-      right: -40px;
-      animation: wave 1.5s infinite ease-in-out reverse;
-    }
+.arm-left, .arm-right {
+  width: 60px;
+  height: 16px;
+  background: gold;
+  border-radius: 8px;
+  position: absolute;
+  top: 80px;
+  transform-origin: left center;
+}
 
-    /* Legs */
-    .left-leg, .right-leg {
-      width: 20px;
-      height: 60px;
-      background: gold;
-      border-radius: 6px;
-      position: absolute;
-      top: 160px;
-    }
+.arm-left {
+  left: -10px;
+  animation: swingArm 1.5s infinite ease-in-out;
+}
 
-    .left-leg {
-      left: 40px;
-      animation: walk 1.5s infinite ease-in-out;
-    }
+.arm-right {
+  right: -10px;
+  animation: swingArm 1.5s infinite ease-in-out reverse;
+}
 
-    .right-leg {
-      right: 40px;
-      animation: walk 1.5s infinite ease-in-out reverse;
-    }
+.hand-left, .hand-right {
+  width: 16px;
+  height: 16px;
+  background: gold;
+  border-radius: 50%;
+  position: absolute;
+  top: 82px;
+}
 
-    /* Animations */
-    @keyframes headRotate {
-      0% { transform: rotate(-10deg); }
-      100% { transform: rotate(10deg); }
-    }
+.hand-left {
+  left: -50px;
+}
 
-    @keyframes blink {
-      0%, 90% { transform: scaleY(1); }
-      95%, 100% { transform: scaleY(0.1); }
-    }
+.hand-right {
+  right: -50px;
+}
 
-    @keyframes wave {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(30deg); }
-      100% { transform: rotate(0deg); }
-    }
+.leg-left, .leg-right {
+  width: 20px;
+  height: 60px;
+  background: gold;
+  border-radius: 6px;
+  position: absolute;
+  top: 160px;
+}
 
-    @keyframes walk {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(20deg); }
-      100% { transform: rotate(0deg); }
-    }
+.leg-left {
+  left: 60px;
+  animation: walk 1.5s infinite ease-in-out;
+}
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+.leg-right {
+  right: 60px;
+  animation: walk 1.5s infinite ease-in-out reverse;
+}
+
+.shoe-left, .shoe-right {
+  width: 40px;
+  height: 20px;
+  background: gold;
+  position: absolute;
+  border-radius: 10px 10px 0 0;
+  top: 215px;
+}
+
+.shoe-left {
+  left: 50px;
+}
+
+.shoe-right {
+  right: 50px;
+}
+
+@keyframes headRotate {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
+}
+
+@keyframes blink {
+  0%, 90% { transform: scaleY(1); }
+  95%, 100% { transform: scaleY(0.1); }
+}
+
+@keyframes swingArm {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(25deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes walk {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
   </style>
 </head>
 <body>
@@ -144,10 +187,16 @@
     </div>
     <div class="neck"></div>
     <div class="body"></div>
-    <div class="left-arm"></div>
-    <div class="right-arm"></div>
-    <div class="left-leg"></div>
-    <div class="right-leg"></div>
+    <div class="shoulder-left"></div>
+    <div class="shoulder-right"></div>
+    <div class="arm-left"></div>
+    <div class="arm-right"></div>
+    <div class="hand-left"></div>
+    <div class="hand-right"></div>
+    <div class="leg-left"></div>
+    <div class="leg-right"></div>
+    <div class="shoe-left"></div>
+    <div class="shoe-right"></div>
   </div>
 </body>
 </html>
