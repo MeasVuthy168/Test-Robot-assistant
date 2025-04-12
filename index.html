@@ -1,34 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Animated Robot PNG</title>
+  <title>Animated Robot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background-color: #0d2d5c;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0;
+      padding: 0;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .robot {
-      width: 120px;
-      animation: bounce 2s infinite ease-in-out;
+    svg {
+      width: 200px;
+      height: auto;
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+    #robot-head {
+      animation: rotateHead 3s infinite ease-in-out;
+      transform-origin: center bottom;
+    }
+
+    #robot-arm {
+      animation: swingArm 2s infinite ease-in-out;
+      transform-origin: top right;
+    }
+
+    @keyframes rotateHead {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+    }
+
+    @keyframes swingArm {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-15deg); }
     }
   </style>
 </head>
 <body>
-  <img src="icons8-robot-94.png" alt="Robot" class="robot">
+
+  <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body -->
+    <rect x="75" y="100" width="50" height="80" fill="#0d2d5c"/>
+
+    <!-- Head -->
+    <g id="robot-head">
+      <rect x="70" y="50" width="60" height="40" fill="#ffd700"/>
+      <circle cx="85" cy="70" r="5" fill="#000"/>
+      <circle cx="115" cy="70" r="5" fill="#000"/>
+    </g>
+
+    <!-- Arm -->
+    <g id="robot-arm">
+      <rect x="125" y="110" width="40" height="10" fill="#ffd700"/>
+    </g>
+  </svg>
+
 </body>
 </html>
