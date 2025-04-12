@@ -1,68 +1,136 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Robot Animation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Robot</title>
   <style>
     body {
-      background-color: #0d2d5c;
       margin: 0;
-      height: 100vh;
+      background-color: #0d2d5c;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
-    svg {
-      width: 200px;
+    .robot {
+      position: relative;
+      animation: walk 2s infinite ease-in-out;
     }
 
-    #head {
-      animation: headRotate 2s infinite ease-in-out;
-      transform-origin: center bottom;
+    .head {
+      width: 80px;
+      height: 50px;
+      background: #ffd700;
+      border-radius: 10px;
+      position: relative;
+      animation: head-tilt 2s infinite ease-in-out;
+      transform-origin: center;
+      margin: 0 auto;
     }
 
-    #right-arm {
-      animation: armSwing 2s infinite ease-in-out;
-      transform-origin: top right;
+    .eye {
+      width: 10px;
+      height: 10px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 18px;
+      animation: blink 4s infinite;
     }
 
-    @keyframes headRotate {
+    .eye.left { left: 18px; }
+    .eye.right { right: 18px; }
+
+    .neck {
+      width: 10px;
+      height: 10px;
+      background: #ffd700;
+      margin: 0 auto;
+    }
+
+    .body {
+      width: 60px;
+      height: 100px;
+      background: #ffd700;
+      border-radius: 12px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .arm {
+      width: 40px;
+      height: 10px;
+      background: #ffd700;
+      position: absolute;
+      top: 20px;
+      transform-origin: left center;
+    }
+
+    .arm.left {
+      left: -40px;
+      animation: wave-left 1.5s infinite ease-in-out;
+    }
+
+    .arm.right {
+      right: -40px;
+      transform-origin: right center;
+      animation: wave-right 1.5s infinite ease-in-out;
+    }
+
+    .leg {
+      width: 14px;
+      height: 50px;
+      background: #ffd700;
+      position: absolute;
+      bottom: -50px;
+      border-radius: 4px;
+    }
+
+    .leg.left { left: 10px; }
+    .leg.right { right: 10px; }
+
+    /* Animations */
+    @keyframes walk {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes head-tilt {
       0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(10deg); }
+      50% { transform: rotate(-5deg); }
     }
 
-    @keyframes armSwing {
+    @keyframes wave-left {
       0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(-20deg); }
+      50% { transform: rotate(40deg); }
+    }
+
+    @keyframes wave-right {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-40deg); }
+    }
+
+    @keyframes blink {
+      0%, 100% { transform: scaleY(1); }
+      45%, 55% { transform: scaleY(0.2); }
     }
   </style>
 </head>
 <body>
-  <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-    <!-- Body -->
-    <rect x="75" y="100" width="50" height="80" rx="10" fill="#ffd700"/>
-
-    <!-- Head -->
-    <g id="head">
-      <rect x="70" y="50" width="60" height="40" rx="8" fill="#ffd700"/>
-      <circle cx="85" cy="70" r="5" fill="#0d2d5c"/>
-      <circle cx="115" cy="70" r="5" fill="#0d2d5c"/>
-    </g>
-
-    <!-- Right Arm (Animated) -->
-    <g id="right-arm">
-      <rect x="125" y="110" width="35" height="10" rx="4" fill="#ffd700"/>
-    </g>
-
-    <!-- Left Arm (Static) -->
-    <rect x="40" y="110" width="35" height="10" rx="4" fill="#ffd700"/>
-
-    <!-- Legs -->
-    <rect x="80" y="185" width="10" height="40" rx="4" fill="#ffd700"/>
-    <rect x="110" y="185" width="10" height="40" rx="4" fill="#ffd700"/>
-  </svg>
+  <div class="robot">
+    <div class="head">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+    </div>
+    <div class="neck"></div>
+    <div class="body">
+      <div class="arm left"></div>
+      <div class="arm right"></div>
+      <div class="leg left"></div>
+      <div class="leg right"></div>
+    </div>
+  </div>
 </body>
 </html>
