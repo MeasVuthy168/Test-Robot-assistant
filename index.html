@@ -1,49 +1,208 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Animated Robot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
+      background-color: #0d2d5c;
       margin: 0;
       padding: 0;
-      background-color: #0d2d5c;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
 
-    .robot-container {
-      animation: bounce 1.8s infinite ease-in-out;
+    .robot {
+      position: relative;
+      width: 140px;
+      animation: float 2s ease-in-out infinite;
     }
 
-    .robot-container img {
-      width: 180px;
-      height: auto;
-      user-select: none;
+    /* Head */
+    .head {
+      width: 80px;
+      height: 50px;
+      background: #eee;
+      border: 6px solid black;
+      border-radius: 15px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(-10deg);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      25% {
-        transform: translateY(-10px) rotate(-2deg);
-      }
-      50% {
-        transform: translateY(0px) rotate(2deg);
-      }
-      75% {
-        transform: translateY(-5px) rotate(-1deg);
-      }
+    .eye {
+      width: 14px;
+      height: 14px;
+      border: 3px solid gold;
+      border-radius: 50%;
+      background: black;
+      animation: blink 3s infinite;
+    }
+
+    /* Neck */
+    .neck {
+      width: 14px;
+      height: 20px;
+      background: #555;
+      position: absolute;
+      top: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Body */
+    .body {
+      width: 100px;
+      height: 110px;
+      background: #bbb;
+      border-radius: 30px;
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Shoulders */
+    .shoulder {
+      width: 20px;
+      height: 20px;
+      background: #555;
+      border-radius: 50%;
+      position: absolute;
+      top: 80px;
+    }
+
+    .shoulder.left { left: -10px; }
+    .shoulder.right { right: -10px; }
+
+    /* Arms */
+    .arm {
+      width: 60px;
+      height: 12px;
+      background: black;
+      position: absolute;
+      top: 80px;
+      transform-origin: left center;
+      animation: wave 2s infinite ease-in-out;
+    }
+
+    .arm.right {
+      right: -60px;
+      transform-origin: right center;
+      animation: wave-right 2s infinite ease-in-out;
+    }
+
+    /* Forearms */
+    .forearm {
+      width: 35px;
+      height: 10px;
+      background: white;
+      position: absolute;
+      top: 0;
+      left: 60px;
+    }
+
+    .forearm.right {
+      left: auto;
+      right: 60px;
+    }
+
+    .hand {
+      width: 12px;
+      height: 12px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: -2px;
+      left: 95px;
+    }
+
+    .hand.right {
+      left: auto;
+      right: 95px;
+    }
+
+    /* Legs */
+    .leg {
+      width: 16px;
+      height: 50px;
+      background: black;
+      position: absolute;
+      top: 170px;
+    }
+
+    .leg.left { left: 30px; }
+    .leg.right { right: 30px; }
+
+    .foot {
+      width: 40px;
+      height: 18px;
+      background: black;
+      border-radius: 5px;
+      position: absolute;
+      top: 215px;
+    }
+
+    .foot.left { left: 10px; }
+    .foot.right { right: 10px; }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(30deg); }
+    }
+
+    @keyframes wave-right {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-30deg); }
+    }
+
+    @keyframes blink {
+      0%, 90%, 100% { background: black; }
+      95% { background: #ffd700; }
     }
   </style>
 </head>
 <body>
-  <div class="robot-container">
-    <img src="robot.png" alt="Robot">
+  <div class="robot">
+    <div class="head">
+      <div class="eye"></div>
+      <div class="eye"></div>
+    </div>
+    <div class="neck"></div>
+    <div class="body"></div>
+
+    <div class="shoulder left"></div>
+    <div class="shoulder right"></div>
+
+    <div class="arm left">
+      <div class="forearm"></div>
+      <div class="hand"></div>
+    </div>
+
+    <div class="arm right">
+      <div class="forearm right"></div>
+      <div class="hand right"></div>
+    </div>
+
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+
+    <div class="foot left"></div>
+    <div class="foot right"></div>
   </div>
 </body>
 </html>
