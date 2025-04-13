@@ -1,209 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Animated Robot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robot Appearance</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       background-color: #0d2d5c;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
     }
 
-    .robot {
-      position: relative;
-      width: 200px;
+    .robot-container {
+      animation: bounce 1.8s infinite ease-in-out;
     }
 
-    /* Head */
-    .head {
-      width: 80px;
-      height: 60px;
-      background-color: #f0f0f0;
-      border-radius: 20px;
-      position: absolute;
-      top: 0;
-      left: 60px;
-      transform: rotate(-10deg);
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      box-shadow: 0 0 0 8px black inset;
+    .robot-container img {
+      width: 180px;
+      height: auto;
+      user-select: none;
     }
 
-    .eye {
-      width: 20px;
-      height: 20px;
-      border: 4px solid #facc15;
-      border-radius: 50%;
-      background-color: transparent;
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-10px) rotate(-2deg);
+      }
+      50% {
+        transform: translateY(0px) rotate(2deg);
+      }
+      75% {
+        transform: translateY(-5px) rotate(-1deg);
+      }
     }
-
-    /* Neck */
-    .neck {
-      width: 20px;
-      height: 20px;
-      background-color: #666;
-      position: absolute;
-      top: 58px;
-      left: 90px;
-    }
-
-    /* Body */
-    .body {
-      width: 100px;
-      height: 100px;
-      background-color: #ccc;
-      border-radius: 40% 40% 20% 20%;
-      position: absolute;
-      top: 80px;
-      left: 50px;
-    }
-
-    /* Shoulders */
-    .shoulder {
-      width: 20px;
-      height: 20px;
-      background-color: #555;
-      border-radius: 50%;
-      position: absolute;
-      top: 90px;
-    }
-
-    .shoulder.left { left: 30px; }
-    .shoulder.right { right: 30px; }
-
-    /* Arms */
-    .arm {
-      width: 14px;
-      height: 50px;
-      background-color: #111;
-      position: absolute;
-      top: 110px;
-    }
-
-    .arm.left {
-      left: 20px;
-      transform: rotate(40deg);
-      transform-origin: top right;
-    }
-
-    .arm.right {
-      right: 20px;
-      transform: rotate(-30deg);
-      transform-origin: top left;
-    }
-
-    .forearm {
-      width: 14px;
-      height: 40px;
-      background-color: #eee;
-      position: absolute;
-      top: 40px;
-    }
-
-    .forearm.left {
-      left: -4px;
-      transform: rotate(20deg);
-    }
-
-    .forearm.right {
-      left: -4px;
-      transform: rotate(-30deg);
-    }
-
-    .hand {
-      width: 16px;
-      height: 16px;
-      background-color: #000;
-      border-radius: 50%;
-      position: absolute;
-      bottom: -8px;
-      left: -1px;
-    }
-
-    /* Hips */
-    .hip {
-      width: 80px;
-      height: 30px;
-      background-color: #aaa;
-      border-radius: 16px;
-      position: absolute;
-      top: 180px;
-      left: 60px;
-    }
-
-    .hip-joint {
-      width: 14px;
-      height: 14px;
-      background-color: #111;
-      border-radius: 50%;
-      position: absolute;
-      top: 175px;
-    }
-
-    .hip-joint.left { left: 70px; }
-    .hip-joint.right { left: 110px; }
-
-    /* Legs */
-    .leg {
-      width: 14px;
-      height: 60px;
-      background-color: #111;
-      position: absolute;
-      top: 200px;
-    }
-
-    .leg.left { left: 75px; }
-    .leg.right { left: 111px; }
-
-    .foot {
-      width: 40px;
-      height: 24px;
-      background-color: black;
-      border-radius: 8px;
-      position: absolute;
-      top: 255px;
-    }
-
-    .foot.left { left: 58px; }
-    .foot.right { left: 104px; }
   </style>
 </head>
 <body>
-  <div class="robot">
-    <div class="head">
-      <div class="eye"></div>
-      <div class="eye"></div>
-    </div>
-    <div class="neck"></div>
-    <div class="body"></div>
-    <div class="shoulder left"></div>
-    <div class="shoulder right"></div>
-
-    <div class="arm left">
-      <div class="forearm left">
-        <div class="hand"></div>
-      </div>
-    </div>
-    <div class="arm right">
-      <div class="forearm right">
-        <div class="hand"></div>
-      </div>
-    </div>
-
-    <div class="hip"></div>
-    <div class="hip-joint left"></div>
-    <div class="hip-joint right"></div>
-    <div class="leg left"></div>
-    <div class="leg right"></div>
-    <div class="foot left"></div>
-    <div class="foot right"></div>
+  <div class="robot-container">
+    <img src="robot.png" alt="Robot">
   </div>
 </body>
 </html>
